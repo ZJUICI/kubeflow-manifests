@@ -1,0 +1,25 @@
+issuer: http://dex.auth.svc.cluster.local:5556/dex
+storage:
+  type: postgres
+  config:
+    host: postgres
+    port: 5432
+    database: dex_db
+    user: dex
+    password: 66964843358242dbaaa7778d8477c288
+    ssl:
+      mode: disable
+web:
+  http: 0.0.0.0:5556
+logger:
+  level: "debug"
+  format: text
+oauth2:
+  skipApprovalScreen: true
+enablePasswordDB: true
+staticClients:
+  # https://github.com/dexidp/dex/pull/1664
+  - idEnv: OIDC_CLIENT_ID
+    redirectURIs: ["/authservice/login/oidc"]
+    name: "Dex Login Application"
+    secretEnv: OIDC_CLIENT_SECRET
