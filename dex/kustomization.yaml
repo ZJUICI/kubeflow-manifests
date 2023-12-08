@@ -16,4 +16,4 @@ configMapGenerator:
 images:
   - name: ghcr.io/dexidp/dex
     newName: docker.io/dexidp/dex
-    newTag: v2.36.0-distroless
+    newTag: v2.37.0-distroless
