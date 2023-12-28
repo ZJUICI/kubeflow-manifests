@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: oauth-route
+spec:
+  gateways:
+  - kubeflow-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /oauth2/
+    name: oauth-route
+    route:
+    - destination:
+        host: oauth2-proxy-authservice.kubeflow.svc.cluster.local
+        port:
+          number: 8080
