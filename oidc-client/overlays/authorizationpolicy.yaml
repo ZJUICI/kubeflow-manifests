@@ -1,0 +1,20 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: kubeflow-authz
+  namespace: istio-system
+spec:
+  action: CUSTOM
+  provider:
+    name: oauth2-proxy-authservice
+  rules:
+  - to:
+    - operation:
+        hosts:
+        - ai.zjuici.com
+        - 'kubeflow.agi.zjuici.com'
+        paths:
+        - /*
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
