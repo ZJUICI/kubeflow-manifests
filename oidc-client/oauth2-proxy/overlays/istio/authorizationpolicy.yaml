@@ -6,13 +6,12 @@ metadata:
 spec:
   action: CUSTOM
   provider:
-    name: oauth2-proxy-authservice
+    name: oauth2-proxy
   rules:
   - to:
     - operation:
         hosts:
-        - ai.zjuici.com
-        - 'kubeflow.agi.zjuici.com'
+        - kubeflow.agi.zjuici.com
         paths:
         - /*
   selector:
