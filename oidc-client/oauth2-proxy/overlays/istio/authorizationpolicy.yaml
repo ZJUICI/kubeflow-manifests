@@ -6,14 +6,14 @@ metadata:
 spec:
   action: CUSTOM
   provider:
-    name: oauth2-proxy
+    name: kubeflow-oauth2-proxy
   rules:
-  - to:
-    - operation:
-        hosts:
-        - kubeflow.agi.zjuici.com
-        paths:
-        - /*
+    - to:
+        - operation:
+            hosts:
+              - kubeflow.agi.zjuici.com
+            paths:
+              - /*
   selector:
     matchLabels:
       app: istio-ingressgateway
