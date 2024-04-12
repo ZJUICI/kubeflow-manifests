@@ -5,7 +5,7 @@ namespace: auth
 
 resources:
   - third-party/kubegres/base
-  - https://github.com/kubeflow/manifests//common/dex/overlays/istio/?ref=v1.6.1
+  - https://github.com/kubeflow/manifests//common/dex/overlays/oauth2-proxy/?ref=v1.8.1
 
 configMapGenerator:
   - name: dex
@@ -13,7 +13,11 @@ configMapGenerator:
     files:
       - config.yaml
 
+# IDK why specifying target not working, I have to specify the namespace in the patch file
+patches:
+  - path: patches/virtualservice.yaml
+
 images:
   - name: ghcr.io/dexidp/dex
     newName: docker.io/dexidp/dex
-    newTag: v2.37.0-distroless
+    newTag: v2.39.1-distroless

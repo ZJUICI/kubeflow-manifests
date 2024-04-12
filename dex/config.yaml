@@ -16,6 +16,7 @@ logger:
   format: text
 oauth2:
   skipApprovalScreen: true
+  passwordConnector: local
 enablePasswordDB: true
 staticClients:
   # https://github.com/dexidp/dex/pull/1664
