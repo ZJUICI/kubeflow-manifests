@@ -1,4 +1,4 @@
-FROM ghcr.io/huggingface/text-generation-inference:1.4.4
+FROM ghcr.io/huggingface/text-generation-inference:2.2.0
 
 # common environemnt variables
 ENV NB_USER jovyan
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 RUN python -m pip install --upgrade --no-cache-dir pip 
 
 # install - s6 overlay
-ARG S6_OVERLAY_VERSION=v3.1.6.2
+ARG S6_OVERLAY_VERSION=v3.2.0.0
 ARG S6_OVERLAY_ARCH="x86_64"
 RUN curl -LO "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" \
   && curl -LO "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz.sha256" \
@@ -49,7 +49,7 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
   && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 # install - code-server
-ARG CODESERVER_VERSION=4.89.0
+ARG CODESERVER_VERSION=4.92.2
 RUN curl -LO "https://github.com/cdr/code-server/releases/download/v${CODESERVER_VERSION}/code-server_${CODESERVER_VERSION}_amd64.deb" \
   && dpkg -i code-server_${CODESERVER_VERSION}_amd64.deb \
   && rm -f code-server_${CODESERVER_VERSION}_amd64.deb

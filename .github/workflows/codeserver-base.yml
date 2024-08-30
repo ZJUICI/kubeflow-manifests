@@ -24,7 +24,7 @@ jobs:
           images: zjuici/codeserver
           tags: |
             # use custom value instead of git tag
-            type=semver,pattern={{version}},value=0.6.4
+            type=semver,pattern={{version}},value=0.6.5
       - name: Build and push Docker image
         uses: docker/build-push-action@v6.7.0
         with:
