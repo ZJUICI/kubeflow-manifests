@@ -23,10 +23,10 @@ jobs:
         with:
           images: zjuici/codeserver
           flavor: |
-            suffix=-tgi
+            prefix=tgi-
           tags: |
             # use custom value instead of git tag
-            type=semver,pattern={{version}},value=0.8.1
+            type=semver,pattern={{version}},value=2.2.0
       - name: Build and push Docker image
         uses: docker/build-push-action@v6.7.0
         with:
