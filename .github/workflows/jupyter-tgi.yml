@@ -1,0 +1,37 @@
+name: Publish jupyter TGI image
+
+on:
+  workflow_dispatch: # Allows to trigger the workflow manually in GitHub UI
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3.3.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5.5.1
+        with:
+          images: zjuici/jupyter
+          flavor: |
+            suffix=-tgi
+          tags: |
+            # use custom value instead of git tag
+            type=semver,pattern={{version}},value=0.8.0
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6.6.1
+        with:
+          file: jupyter/images/jupyterlab/tgi/Dockerfile
+          context: jupyter/images/jupyterlab/tgi
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
