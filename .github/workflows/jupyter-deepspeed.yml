@@ -28,7 +28,7 @@ jobs:
             # use custom value instead of git tag
             type=semver,pattern={{version}},value=0.6.3
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6.6.1
+        uses: docker/build-push-action@v6.7.0
         with:
           file: jupyter/images/jupyterlab/deepspeed/Dockerfile
           context: jupyter/images/jupyterlab/deepspeed
