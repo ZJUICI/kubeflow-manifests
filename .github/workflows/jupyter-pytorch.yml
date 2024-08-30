@@ -21,7 +21,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.5.1
         with:
-          images: zjuici/jupyter-pytorch
+          images: zjuici/jupyter
+          flavor: |
+            prefix=pytorch-
           tags: |
             # use custom value instead of git tag
             type=semver,pattern={{version}},value=2.3.0-cuda12.1
