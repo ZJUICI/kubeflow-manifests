@@ -24,7 +24,7 @@ jobs:
           images: zjuici/jupyter-pytorch
           tags: |
             # use custom value instead of git tag
-            type=semver,pattern={{version}},value=0.1.0
+            type=semver,pattern={{version}},value=2.3.0-cuda12.1
       - name: Build and push Docker image
         uses: docker/build-push-action@v6.7.0
         with:
