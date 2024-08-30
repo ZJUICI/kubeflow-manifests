@@ -14,22 +14,18 @@ providers:
     id: dex
     clientID: kubeflow-oauth2-proxy
     clientSecret: pUBnBOY80SnXgjibTYM9ZWNzY2xreNGQok
-    loginURL: /dex/auth
-    loginURLParameters:
-      - name: approval_prompt
-        default:
-          - force
+    loginURL: /auth
     oidcConfig:
+      issuerURL: https://idp.tablegpt.zjuici.com
       audienceClaims:
         - aud
+      # The following claims are just default values from the official documentation.
+      # However, if I don't specify them, I will get 500 error says: "Error creating session during OAuth2 callback: neither the id_token nor the profileURL set an email"
+      userIDClaim: email
       emailClaim: email
       groupsClaim: groups
-      issuerURL: http://dex.auth.svc.cluster.local:5556/dex
-      jwksURL: http://dex.auth.svc.cluster.local:5556/dex/keys
-      skipDiscovery: true
-      userIDClaim: email
     scope: openid profile email groups
-    redeemURL: http://dex.auth.svc.cluster.local:5556/dex/token
+    # redeemURL: http://dex.auth.svc.cluster.local:5556/dex/token
 server:
   BindAddress: 0.0.0.0:4180
   SecureBindAddress: ""
