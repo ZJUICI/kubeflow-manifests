@@ -61,15 +61,15 @@ spawnerFormDefaults:
   ################################################################
   imageGroupOne:
     # the default container image
-    value: zjuici/codeserver:0.6.3
+    value: zjuici/codeserver:0.6.5
 
     # the list of available container images in the dropdown
     options:
-      - zjuici/codeserver:0.6.4
-      - zjuici/codeserver:0.8.0-tgi
-      - zjuici/codeserver:0.2.0-tei-cpu
-      - zjuici/codeserver:0.6.3-pytorch
-      - zjuici/codeserver:0.5.1-deepspeed
+      - zjuici/codeserver:0.6.5
+      - zjuici/codeserver:tgi-2.2.0
+      - zjuici/codeserver:tei-cpu-1.5
+      - zjuici/codeserver:pytorch-2.3.0-cuda12.1
+      - zjuici/codeserver:deepspeed-0.14.2
 
   ################################################################
   # RStudio-like Container Images (Group 2)
