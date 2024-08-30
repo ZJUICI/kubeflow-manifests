@@ -23,7 +23,7 @@ jobs:
         with:
           images: zjuici/jupyter
           flavor: |
-            suffix=-tgi
+            prefix=tgi-
           tags: |
             # use custom value instead of git tag
             type=semver,pattern={{version}},value=2.2.0
