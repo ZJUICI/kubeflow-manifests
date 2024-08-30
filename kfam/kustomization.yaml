@@ -2,8 +2,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- https://github.com/kubeflow/manifests//apps/profiles/upstream/overlays/kubeflow/?ref=v1.6.1
-
-# images:
-#   - name: gcr.io/kubebuilder/kube-rbac-proxy
-#     newName: registry.cn-hangzhou.aliyuncs.com/zju_gcr/kubebuilder_kube-rbac-proxy
+- https://github.com/kubeflow/manifests//apps/profiles/upstream/overlays/kubeflow/?ref=v1.9.0
