@@ -1,4 +1,4 @@
-FROM ghcr.io/huggingface/text-embeddings-inference:cpu-1.2
+FROM ghcr.io/huggingface/text-embeddings-inference:cpu-1.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -32,7 +32,7 @@ RUN chmod +x ~/mambaforge.sh && \
     rm ~/mambaforge.sh
 
 # install - s6 overlay
-ARG S6_OVERLAY_VERSION=v3.1.6.2
+ARG S6_OVERLAY_VERSION=v3.2.0.0
 ARG S6_OVERLAY_ARCH="x86_64"
 RUN curl -LO "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz" \
   && curl -LO "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz.sha256" \
@@ -55,8 +55,8 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 
 # install - jupyterlab
 RUN python -m pip install --upgrade --no-cache-dir \
-  jupyterlab==4.1.5 \
-  ipywidgets==8.1.2
+  jupyterlab==4.2.5 \
+  ipywidgets==8.1.5
 
 # common environemnt variables
 ENV NB_USER jovyan
