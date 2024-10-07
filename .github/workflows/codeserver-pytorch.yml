@@ -28,7 +28,7 @@ jobs:
             # use custom value instead of git tag
             type=semver,pattern={{version}},value=2.3.0-cuda12.1
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6.8.0
+        uses: docker/build-push-action@v6.9.0
         with:
           file: jupyter/images/codeserver/pytorch/Dockerfile
           context: jupyter/images/codeserver/pytorch
